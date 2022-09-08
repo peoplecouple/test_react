@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import MainSlider from './component/MainSlider';
 
 const DB = [
   {
@@ -41,29 +42,33 @@ function App() {
   const [TC, setTC] = useState(false);
   return (
     <>
-      <header>
-        <h1 className={CB} onClick={() => (setCB('on'))}>logo</h1>
-        <h2 className={`기존클래스 ${TC ? 'on' : ''}`}>toggle class</h2>
-        <button onClick={() => (setTC(!TC))} > class 토글 </button>
-        <nav className='GNB'>
-          <ul>
-            {
-              DB.map((el, idx) =>
-              (<li key={idx}>
-                <a href={el.link}>{el.content}</a>
-                <ul className='smenu'>
-                  {el.submenu.map((s_el, s_idx) => (
-                    <li key={s_idx}>
-                      <a href={s_el.link}>{s_el.content}</a>
-                    </li>
-                  ))}
-                </ul>
-              </li>)
-              )
-            }
-          </ul>
-        </nav>
-      </header>
+      <div className="Wrap">
+        <header>
+          <h1 className={CB} onClick={() => (setCB('on'))}>logo</h1>
+          <h2 className={`기존클래스 ${TC ? 'on' : ''}`}>toggle class</h2>
+          <button onClick={() => (setTC(!TC))} > class 토글 </button>
+          <nav className='GNB'>
+            <ul>
+              {
+                DB.map((el, idx) =>
+                (<li key={idx}>
+                  <a href={el.link}>{el.content}</a>
+                  <ul className='smenu'>
+                    {el.submenu.map((s_el, s_idx) => (
+                      <li key={s_idx}>
+                        <a href={s_el.link}>{s_el.content}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>)
+                )
+              }
+            </ul>
+          </nav>
+        </header>
+        <MainSlider />
+      </div>
+
     </>
   );
 }
